@@ -57,7 +57,7 @@ export class UserValidatorMiddleware {
 
       if (userEmail) {
         return res.status(400).send({
-          ok: true,
+          ok: false,
           message: "Email already exist",
         });
       }
