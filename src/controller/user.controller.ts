@@ -43,7 +43,7 @@ export class UserController {
       return SuccessResponse.ok(
         res,
         "Login successfully done",
-        user?.id
+        user?.toJson()
       );
     } catch (error: any) {
       return ServerError.genericError(res, error);

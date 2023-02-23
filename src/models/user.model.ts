@@ -48,8 +48,10 @@ export class User {
 
   public toJson() {
     return {
+      id: this._id,
       username: this._username,
       email: this._email,
+      notes: this._notes,
     };
   }
 
