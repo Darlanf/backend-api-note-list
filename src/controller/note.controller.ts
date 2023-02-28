@@ -11,9 +11,8 @@ export class NoteController {
     try {
       const { userId } = req.params;
       const { title, filed } = req.query;
-      const isFiled =
-        filed?.toString().toLowerCase() ===
-        "true";
+
+      console.log(filed);
 
       const database = new UserDatabase();
       const user = database.getUserId(userId);
@@ -31,6 +30,15 @@ export class NoteController {
         );
       }
 
+      if (filed !== undefined && filed !== "") {
+        const isFiled =
+          filed?.toString().toLowerCase() ===
+          "true";
+        noteList = noteList?.filter(
+          (note) => note.filed === isFiled
+        );
+      }
+
       // Paulo sugeriu para ficar dinamico
       // if (filed === undefined) {
       //   filed = Boolean(false);
@@ -38,12 +46,6 @@ export class NoteController {
       // noteList = noteList.filter(
       //   (note) => note.filed === Boolean(filed)
       // );
-
-      if (isFiled !== undefined) {
-        noteList = noteList?.filter(
-          (note) => note.filed === isFiled
-        );
-      }
 
       // funcionou
       // if (filed !== undefined) {
