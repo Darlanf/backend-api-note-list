@@ -12,8 +12,6 @@ export class NoteController {
       const { userId } = req.params;
       const { title, filed } = req.query;
 
-      console.log(filed);
-
       const database = new UserDatabase();
       const user = database.getUserId(userId);
 
